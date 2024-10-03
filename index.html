@@ -7,22 +7,23 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
-      /* 強制固定容器的大小 */
+      /* 容器設定固定大小並置中顯示 */
       #unity-container {
         width: 1280px;
         height: 720px;
-        margin: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        margin: 0 auto; /* 自動居中 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px; /* 可選：讓畫面與頂部保持距離 */
       }
-      
-      /* 防止畫布擴展超出螢幕 */
-      body {
+
+      /* 防止滾動條出現，保持畫面縮放限制 */
+      html, body {
         margin: 0;
+        padding: 0;
         overflow: hidden;
+        height: 100%;
       }
     </style>
   </head>
@@ -80,7 +81,6 @@
         productName: "game",
         productVersion: "1.0.2",
         showBanner: unityShowBanner,
-        // 停止根據畫布 DOM 尺寸進行縮放
         matchWebGLToCanvasSize: false
       };
 
