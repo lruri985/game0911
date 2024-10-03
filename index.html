@@ -6,6 +6,25 @@
     <title>Unity WebGL Player | game</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* 強制固定容器的大小 */
+      #unity-container {
+        width: 1280px;
+        height: 720px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      
+      /* 防止畫布擴展超出螢幕 */
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -16,7 +35,7 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
+      <div id="unity-warning"></div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
@@ -61,6 +80,8 @@
         productName: "game",
         productVersion: "1.0.2",
         showBanner: unityShowBanner,
+        // 停止根據畫布 DOM 尺寸進行縮放
+        matchWebGLToCanvasSize: false
       };
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -71,6 +92,7 @@
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
       } else {
+        // 固定桌面解析度為1280x720
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
       }
