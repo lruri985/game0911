@@ -11,11 +11,11 @@
       #unity-container {
         width: 720px;
         height: 1280px;
-        margin: 0 auto; /* 水平居中 */
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 20px; /* 可選：距離頂部的空白 */
+        padding-top: 20px;
       }
 
       /* 防止滾動條出現，並保持畫布在頁面中 */
@@ -24,6 +24,7 @@
         padding: 0;
         overflow: hidden;
         height: 100%;
+        background-color: #000;
       }
     </style>
   </head>
@@ -81,13 +82,14 @@
         productName: "game",
         productVersion: "1.0.2",
         showBanner: unityShowBanner,
-        matchWebGLToCanvasSize: false
+        matchWebGLToCanvasSize: false,
+        devicePixelRatio: 1  // 防止高分辨率屏幕放大
       };
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=no';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
